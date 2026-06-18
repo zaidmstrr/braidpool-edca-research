@@ -45,6 +45,7 @@ Unlike centralized pools that rely on Variable Difficulty (Vardiff) to manage se
 The base value or Expected Value (EV) of the bead ($S_i$), perfectly weighted for current market conditions, is: 
 
 $$S_i = \frac{D_{bp}}{D_{network}} \times A_i$$
+
 Here $S_i$ represents the pure Expected Value (EV) of a specific bead. And ${D_{bp}}$ represents the global mining pool difficulty. The ratio $\frac{D_{bp}}{D_{network}}$ calculates the strict mathematical probability that any single Braidpool bead is a valid Bitcoin block. By multiplying this probability by the fee-amplified reward ($A_i$), the score $S_i$ represents the pure, exact Expected Value of one standard unit of Braidpool work anchored to global Bitcoin consensus conditions.
 
 **Equation 3: EDCA Weight**
