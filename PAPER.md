@@ -12,15 +12,15 @@ The Bitcoin mining ecosystem faces a critical centralization crisis driven by th
 ## 1. Theoretical Foundation
 The architecture is built upon three theoretical pillars designed to correct the game-theory failures of legacy mining pools.  
 
-### 1.1 The DAG and Graph Cuts: Eliminating the Orphan Penalty
+### 1.1 The DAG and Graph Cuts
 Traditional decentralized pools use a strict sharechain. If two miners find a share simultaneously, the network forks, and one share is orphaned , severely punishing miners operating outside of major fiber-optic hubs. Braidpool utilizes a Directed Acyclic Graph (DAG) where concurrent shares (beads) do not compete; they are merged. As long as a bead meets the global minimum difficulty floor, it is included in the state. This inclusive consensus permanently neutralizes geographic latency advantages.  
 Furthermore, Braidpool identifies absolute consensus boundaries through Graph Cuts—points in the DAG where all beads on one side definitively point to all beads on the other. The beads trapped between these cuts form discrete topological layers known as Cohorts.
 
-### 1.2 Block-Settled EDCA: Eliminating Time-Hopping
+### 1.2 Block-Settled EDCA
 Standard PPLNS (Pay-Per-Last-N-Shares) relies on a flat window of shares. This step-function incentivizes miners to abandon the pool during "unlucky" (long) rounds to avoid having their shares pushed out of the window without compensation.  
 Braidpool replaces PPLNS with the Exponentially Decayed Cohort Average (EDCA). As new cohorts are closed via Graph Cuts, the mathematical weight of older cohorts is reduced via an exponential decay factor. This "melting ice cube" effect heavily penalizes miners who abandon the pool, mathematically forcing continuous loyalty without relying on wall-clock time.  
 
-### 1.3 The Fee Amplifier: Eliminating EV Leeching
+### 1.3 The Fee Amplifier
 Modern Bitcoin block rewards are highly volatile due to transaction fees. Standard decentralized pools split the reward of a found block equally among past shares , incentivizing "Fee Snipers"—miners who leech off the pool during low-fee periods, but immediately switch to solo mining when mempool fees spike.  
 Braidpool introduces the Fee Amplifier. Because miners build their own block templates via a committed mempool, they must lock the template's total fee value into the bead's metadata. The protocol multiplies the bead's deterministic global difficulty by this exact fee value, ensuring the miner's pool EV dynamically and perfectly matches their solo mining EV at all times.  
 
